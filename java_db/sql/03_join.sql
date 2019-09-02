@@ -128,6 +128,12 @@ select e.ename 사원, e.sal 사원급여, m.ename 상사, m.sal 상사급여
 from emp e, emp m
 where e.mgr=m.empno(+) and e.sal>m.sal;
 
+select e.ename 사원, e.sal 사원급여, m.ename 상사, m.sal 상사급여
+from emp e
+join emp m
+on e.mgr=m.empno
+where e.sal>m.sal;
+
 select e.ename 사원, e.sal 사원급여, d.dname, loc, m.ename 상사, m.sal 상사급여
 from emp e join emp m
 on e.mgr=m.empno
@@ -272,4 +278,10 @@ where row# between 5 and 9;
 1page 1~5         5*0+1        +4
 2page 6~10        5*1+1        +4
 3page 11~15       5*2+1        +4
+
+
+select * from (
+select rownum row#, deptno, dname, loc
+from (select * from dept order by deptno)
+) where row# between 4 and 6;
 
