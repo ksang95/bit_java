@@ -6,21 +6,27 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
-
-$(function() {
-
+const log=console.log;
+$(()=>{
+	$('img').each(function(index,item){ //forEach
+		//log(index);
+		//log(item);
+		$(this).attr('src','./img/ChoBee'+index+'.jpg');
+		$(this).attr('width','100');
+		$(this).attr('height','100');
+	});
 	
-})
-
-$(()=> {})
-
+});
 
 </script>
-
 </head>
 <body>
+<h3> jQuery img </h3>
 
-
-
+<img />
+<img />
+<img />
+<img />
+<img />
 </body>
 </html>
