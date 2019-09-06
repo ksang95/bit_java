@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>img</title>
+<script type="text/javascript">
+const log=console.log;
+window.onload=function(){
+	let img1=document.querySelector('#img1');
+	img1.src='./img/tom1.jpg';
+	img1.width=200;
+	img1.height=200;
+	
+	let btn1=document.querySelector('#btn1');
+	btn1.onclick=function (){
+		alert('btn1 clicked ~~~');
+	};
+	
+	let btn2=document.querySelector('#btn2');
+	btn2.onclick=function(){
+		return confirm("네이버로 갈까요?"); //사이트 이동 전에 확인용 -> 확인: 이동, 취소: 머무름
+	};
+};
+function change(){
+	let src=document.querySelector('#img1').src;
+	let name=src.substring(src.lastIndexOf('/'));
+	if(name=='/tom1.jpg'){
+		document.querySelector('#img1').src="./img/tom2.jpg";
+	}else{
+		document.querySelector('#img1').src="./img/tom1.jpg";
+	}
+}
+</script>
+</head>
+<body>
+<h3> img 처리 </h3>
+
+<button onclick="change()">change image</button>
+<img id="img1" alt="" src="">
+<br>
+<button id="btn1">버튼 1</button>
+<a id="btn2" href="http://www.naver.com">버튼 2</a>
+</body>
+</html>

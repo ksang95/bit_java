@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>이미지 보기</title>
+<style>
+h2 {
+	text-align: center;
+	font-size: 50px;
+}
+
+div {
+	text-align: center;
+	vartical-align: center;
+}
+
+#l, #r, #img1 {
+	text-align: center;
+	display: inline;
+	vertical-align: center;
+	max-height: 450px;
+}
+
+table{
+	height: 500px;
+	width: 50%;
+	border-collaspe: collaspe;
+	text-align: center;
+	margin: 0 auto;
+	vartical-align: center;
+	
+}
+
+</style>
+<script type="text/javascript">
+	let log = console.log;
+	window.onload = function() {
+		let img = document.querySelector('#img1');
+		img.src = "./img/ChoBee1.jpg";
+		img.width = 350;
+		let srcs = [ "./img/ChoBee1.jpg", "./img/ChoBee2.png",
+				"./img/ChoBee3.jpg", "./img/ChoBee4.jpg", "./img/ChoBee5.jpg",
+				"./img/ChoBee6.jpg", "./img/ChoBee7.jpg", "./img/ChoBee8.jpg",
+				"./img/ChoBee9.jpg", "./img/ChoBee10.jpg" ];
+		let index = 0;
+		document.querySelector('#l').onclick = function() {
+			index = (index - 1 + srcs.length) % srcs.length;
+			img.src = srcs[index];
+		};
+		document.querySelector('#r').onclick = function() {
+			index = (index + 1) % srcs.length;
+			img.src = srcs[index];
+		};
+	}
+</script>
+</head>
+<body>
+	<h2>이미지 보기</h2>
+	<div>
+		<table>
+			<tr>
+				<td><h1 id="l">◀</h1></td>
+				<td><img id="img1" alt="" src="" /></td>
+				<td><h1 id="r">▶</h1></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
