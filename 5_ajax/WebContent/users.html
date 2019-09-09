@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>회원가입</title>
+</head>
+<body>
+<h2>회원가입</h2>
+<form action="adduser.jsp" method="get">
+<table border="1">
+<tbody>
+	<tr>
+	<td><label for="id">ID</label></td>
+	<td>
+	<input type="text" id="id" name="id"/>
+	<input type="button" value="ID중복체크" id="id_check"/>
+	</td>
+	</tr>
+	<tr>
+	<td><label for="pw">PASSWORD</label></td>
+	<td><input type="password" id="pw" name="pw"/></td>
+	</tr>
+	<tr>
+	<td><label for="name">NAME</label></td>
+	<td><input type="text" id="name" name="name"/></td>
+	</tr>
+	<tr>
+	<td><label for="role1">ROLE</label></td>
+	<td>
+	<input type="radio" id="role1" name="role" value="user"/>USER
+	<input type="radio" id="role2" name="role" value="admin"/>ADMIN
+	</td>
+	</tr>
+	<tr>
+	<td colspan="2">
+	<input type="submit" value="가입하기"/>
+	<input type="reset" value="취소"/>
+	</td>
+	</tr>
+</tbody>
+</table>
+</form>
+</body>
+</html>
