@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>webworker</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+<p>Count numbers: <output id="result"></output></p>
+<button onclick="startWorker()">Start Worker</button>
+<button onclick="stopWorker()">Stop Worker</button>
+
+<script>
+let w;
+
+function startWorker() {
+  if (typeof(Worker) !== "undefined") { //브라우저가 Web Worker를 제공하는지 확인
+    if (typeof(w) == "undefined") {
+      w = new Worker("worker.js");
+    }
+    w.onmessage = function(event) { //worker가 뒤에서 계속 동작하면서 data넘겨올 때마다 이 함수 실행
+      document.getElementById("result").innerHTML = event.data;
+    };
+  } else {
+    document.getElementById("result").innerHTML = "Sorry! No Web Worker support.";
+  }
+}
+
+function stopWorker() {
+  w.terminate();
+  w = undefined;
+}
+</script>
+
+</body>
+</html>

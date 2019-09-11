@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+#shopping_cart{
+	width: 470px;
+	height: 100px;
+	padding: 10px;
+	border: 1px dotted red;
+}
+.box{
+	width: 150px;
+	height: 100px;
+	padding: 10px;
+	border: 1px dotted red;
+}
+</style>
+<script>
+function allowDrop(e){
+	e.preventDefault(); //드롭 가능하게 설정
+}
+function handleDragStart(e){
+	e.dataTransfer.effectAllowed='move'; //드래그 효과=>이동
+	e.dataTransfer.setData("Text",e.target.id); //드래그에 대상 요소의 id 싣기
+}
+function handleDrop(e){
+	e.preventDefault();
+	var src=e.dataTransfer.getData("Text"); //드래그에서 데이터(요소 id) 꺼내서
+	e.target.appendChild(document.getElementById(src)); //드롭된 곳의 자식 노드로 추가
+}
+
+</script>
+</head>
+<body>
+<p>원하는 물건을 끌어서 옮기세요.</p>
+<table>
+<tr>
+<td class="box" ondrop="handleDrop(event)" ondragover="allowDrop(event)"></td>
+<td class="box" ondrop="handleDrop(event)" ondragover="allowDrop(event)"></td>
+<td class="box" ondrop="handleDrop(event)" ondragover="allowDrop(event)"></td>
+</tr>
+</table>
+<br>
+<div id="shopping_cart" ondrop="handleDrop(event)" ondragover="allowDrop(event)">
+<img id="img1" src="img/tom+jerry1.jpg" draggable="true" ondragstart="handleDragStart(event)" width="150" height="100">
+<img id="img2" src="img/tom+jerry2.jpg" draggable="true" ondragstart="handleDragStart(event)" width="150" height="100">
+<img id="img3" src="img/tom+jerry3.jpg" draggable="true" ondragstart="handleDragStart(event)" width="150" height="100">
+</div>
+</body>
+</html>

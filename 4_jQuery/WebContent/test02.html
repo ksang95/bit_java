@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style type="text/css">
+.error{
+	color:red;
+}
+</style>
+<script>
+	const log = console.log;
+	$(function() { //window.onload 같은 역할 ($=jQuery)
+		$('input[name="id"]').keyup(function(){ //선택된 요소(input 중 name이 'id'인것)에 키보드가 놓여졌을 때 함수 수행
+			let id=$(this).val(); //선택된 이 요소의 value 값
+			if(id.length<5){
+				$('#sid').text('id는 5글자 이상 입력해 주세요.'); //요소 내의 텍스트 설정 
+			}else{
+				$('#sid').text('사용 가능');			
+			}
+		});
+		//$('input[name="name"]').blur(function(){} //선택된 요소에서 벗어났을 때 키보드 포커스 잃으면서 함수 수행
+		$('input[name="name"]').focus(function(){ //요소가 선택되어 키보드 포커스 얻으면서 함수 수행
+			let name=$(this).val(); //선택된 이 요소의 value 값
+			if(name.length<5){
+				$('#sname').text('name는 5글자 이상 입력해 주세요.'); //요소 내의 텍스트 설정 
+			}else{
+				$('#sname').text('사용 가능');			
+			}
+		});
+		$('input[type="button"]').click(function(){ //요소가 클릭됐을 때 함수 수행
+			$('#f1').attr('method','GET'); //요소 속성 설정
+			$('#f1').attr('action','process.jsp');
+			$('#f1').submit(); //지정된 서버로 제출
+		});
+	});
+</script>
+
+</head>
+<body>
+	<h3>Register</h3>
+	<form id="f1">
+		ID : <input type="text" name="id" id="id">
+		<span id="sid" class="error"></span><br>
+		Name : <input type="text" name="name" id="name">
+		<span id="sname" class="error"></span><br>
+		
+		<input type="button" value="Register" id="btn1">
+		<input type="reset">
+
+	</form>
+</body>
+</html>
