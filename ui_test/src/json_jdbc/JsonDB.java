@@ -20,7 +20,7 @@ public class JsonDB {
 	
 	
 	public static String searchEmp(String ename) {
-		String sql = "select e.ename,e.job,m.ename as mgr,dname from emp e, emp m, dept d where e.mgr=m.empno and e.deptno=d.deptno and lower(e.ename) like lower('%'||?||'%') order by e.ename";
+		String sql = "select e.ename,e.job,nvl(m.ename,' ') as mgr,dname from emp e, emp m, dept d where e.mgr=m.empno(+) and e.deptno(+)=d.deptno and lower(e.ename) like lower('%'||?||'%') order by e.ename";
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -77,30 +77,5 @@ public class JsonDB {
 		return JSONArray.toJSONString(array);
 	}
 	
-	public static String AllDeptCount() {
-		String sql = "select dname,count(*) as count from emp e, dept d where e.deptno(+)=d.deptno group by d.deptno,dname";
-		Connection con=null;
-		PreparedStatement ps=null;
-		ResultSet rs=null;
-		JSONArray array=new JSONArray();
-		Map<String, String> map = new HashMap<String, String>();
-		try {
-			con= JDBCUtil.getConnection();
-			ps=con.prepareStatement(sql);
-			rs=ps.executeQuery();
-			while(rs.next()) {
-				map.put("dname", rs.getString("dname"));
-				map.put("count", rs.getString("count"));
-				JSONObject obj=new JSONObject(map);
-				array.add(obj);
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		} finally {
-			JDBCUtil.close(con, ps, rs);
-		}
-		
-		
-		return JSONArray.toJSONString(array);
-	}
+	
 }

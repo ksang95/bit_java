@@ -23,7 +23,7 @@
 </style>
 <script type="text/javascript">
 $(()=>{
-	$('img').each(function(index,item){
+	$('.imgs').each(function(index,item){
 		$(this).attr('src','img/ss0'+index+'.jpg');
 		$(this).attr('width','200');
 	});
@@ -56,13 +56,16 @@ $(()=>{
 	</ul>
 </aside>
 <aside id="center">
-<span><img></span>
-<span><img></span>
-<span><img></span>
-<span><img></span>
-<span><img></span>
-<span><img></span>
+<div>
+<span><img class="imgs"></span>
+<span><img class="imgs"></span>
+<span><img class="imgs"></span>
+<span><img class="imgs"></span>
+<span><img class="imgs"></span>
+<span><img class="imgs"></span>
+</div>
 </aside>
+<img src="img/pngfind.com-lisa-png-1438388.png" id="bg">
 </section>
 </body>
 </html>
