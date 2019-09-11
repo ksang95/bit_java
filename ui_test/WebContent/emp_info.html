@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/table.css">
+<style type="text/css">
+
+#emp_i{
+	background-color:#ff9900; 
+}
+
+#center div{
+	margin: 50px;
+}
+
+.tablea{
+	border: 2px solid black;
+	border-collapse: collapse;
+	margin: 0 auto; 
+}
+
+.tablea td, .tablea th{
+	border: 2px solid black;
+	width: 100px;
+	text-align: center;
+}
+
+</style>
+<script type="text/javascript">
+$(function(){  
+	 $('#btn1').click( function(){   
+		 $.ajax({
+			 url:'emp_search.jsp',
+			 dataType:'json',
+			 data:{ename:$('#ename').val()},
+			 success:function(data){
+				 display(data);
+			 },
+			 error:function(error){
+				 alert("error "+error.name);
+			 }
+		 });  
+		 
+		 
+	 });
+	 
+});   
+const log = console.log;
+function display(data){	
+	 let tag = "<table class='tablea'>";
+	 tag += "<tr><th>이름</th><th>업무</th> <th>매니저</th><th>부서</th></tr> ";
+	 
+	 $(data).each((i,item)=>{
+		 tag += "<tr><td>";
+	     tag += item.ename+"</td><td>"+item.job+"</td><td>"+item.mgr+"</td><td>"+item.dname;
+	     tag += "</tr></td>";
+	 });
+	 
+	 tag += "</table>";
+	 
+	 $('#result').html(tag);
+}
+</script>
+</head>
+<body>
+<section>
+<aside id="left">
+<h2>SangSang</h2>
+	<ul>
+		<li  id="home"><a href="main.html">홈</a></li>
+		<li  class="dropbox" id="intro">
+		<a href="#">회사 소개</a>
+		<span class="dropmenu">
+			<span><a href="intro.html">SangSang</a></span>
+			<span><a href="state.html">부서 현황</a></span>
+			<span><a href="location.html">회사 위치</a></span>
+		</span>
+		</li>
+		<li  id="emp_i"><a href="emp_info.html">사원 정보</a></li>
+		<li class="dropbox"  id="board">
+			<a href="#">게시판</a>
+			<span class="dropmenu">
+			<span><a href="photo_board.html">사진 게시판</a></span>
+			<span><a href="free_board.html">자유 게시판</a></span>
+			</span>
+		</li>
+	</ul>
+</aside>
+<aside id="center">
+<div>
+사원 이름: <input type="text" id="ename" name="ename"> <button id="btn1" name="btn1">검색</button>
+<br><br>
+<span id="result">
+</span>
+</div>
+</aside>
+</section>
+</body>
+</html>

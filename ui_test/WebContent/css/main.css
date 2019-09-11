@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css?family=Monda&display=swap');
+
+html, body{
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+
+#left h2 {
+	font-family: 'Monda', serif;
+	font-size: 40pt;
+}
+
+ul {
+	list-style: none;
+	padding-left:0;
+}
+ul li{
+	margin: 0;
+	padding: 20px;
+	text-align: left;
+}
+
+ul li a{
+	text-decoration: none;
+	color: black;
+	font-size: 20pt;
+}
+
+ul li:hover{
+	background-color: #4aa5ff;
+}
+
+.dropbox {
+	position: relative;
+}
+
+.dropmenu {
+	visibility: hidden;
+	position: absolute;
+	top: 75px;
+	left: 100px;
+	background-color: #ffe680;
+	width: 200px;
+	z-index: 100;
+}
+
+.dropmenu span{
+	display: block;
+	margin: 0;
+	text-align: center;
+}
+
+.dropmenu span a{
+	font-size: 18pt;
+	line-height: 2.0;
+}
+
+
+.dropbox:hover>.dropmenu {
+	visibility: visible;
+}
+section{
+	width: 100%;
+	height: 100%;
+}
+
+#left{
+	background-color: #ffcc00;
+	float: left;
+	height: 100%;
+	width: 300px;
+	text-align: center;
+}
+
+#center{
+	float: left;
+	height: 100%;
+	width: 1200px;
+	max-width: 80%;
+	text-align: center;
+}
