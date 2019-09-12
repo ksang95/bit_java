@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Insert title here</title>
+<title>SangSang</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -18,13 +18,16 @@
 	background-color: #ff9900;
 }
 
-#center div {
+
+
+#center > div {
 	margin-top: 100px;
 }
 
 #result{
 	text-align: center;
 }
+
 
 td{
 	font-family: 'Jua', sans-serif;
@@ -81,6 +84,7 @@ function display(data){
 	 
 	 $('#result').html(tag);
 }
+
 function chart(xdata){
 Highcharts.chart('result', {
     chart: {
@@ -89,7 +93,7 @@ Highcharts.chart('result', {
         plotShadow: false
     },
     title: {
-        text: 'SangSang<br>Depts<br>2019',
+        text: 'SangSang<br>Emps in Depts<br>2019',
         align: 'center',
         verticalAlign: 'middle',
         y: 60
@@ -118,10 +122,7 @@ Highcharts.chart('result', {
         name: 'proportion',
         innerSize: '50%',
         data: xdata
-    }],
-    exporting: {
-        enabled: false
-      }
+    }]
      
 });
 }
@@ -157,8 +158,7 @@ Highcharts.chart('result', {
 				<button id="btn1" class="btn">부서 - 테이블</button>
 				<button id="btn2" class="btn">부서 - 그래프</button>
 				<br> <br>
-				<div id="result"
-					style="min-width: 510px; height: 450px; max-width: 800px; margin: 0 auto"></div>
+				<div id="result" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 			</div>
 		</aside>
 		<img src="img/pngfind.com-lisa-png-1438388.png" id="bg">
