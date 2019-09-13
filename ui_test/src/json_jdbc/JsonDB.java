@@ -20,7 +20,7 @@ public class JsonDB {
 	
 	
 	public static String searchEmp(String ename) {
-		String sql = "select e.ename,e.job,nvl(m.ename,' ') as mgr,dname from emp e, emp m, dept d where e.mgr=m.empno(+) and e.deptno(+)=d.deptno and lower(e.ename) like lower('%'||?||'%') order by e.ename";
+		String sql = "select e.ename,e.job,nvl(m.ename,' ') as mgr,dname from emp e, emp m, dept d where e.mgr=m.empno(+) and e.deptno=d.deptno and lower(e.ename) like lower('%'||?||'%') order by e.ename";
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -50,7 +50,7 @@ public class JsonDB {
 	}
 	
 	public static String searchAllDept() {
-		String sql = "select dname,count(*) as count,round(avg(nvl(sal,0))) as sal from emp e, dept d where e.deptno(+)=d.deptno group by d.deptno,dname";
+		String sql = "select dname,count(ename) as count,round(avg(nvl(sal,0))) as sal from emp e, dept d where e.deptno(+)=d.deptno group by d.deptno,dname";
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;

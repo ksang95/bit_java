@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 
 <% 
+	request.setCharacterEncoding("utf-8");
 	String ename=request.getParameter("ename");
 	String data=JsonDB.searchEmp(ename);
 %>
