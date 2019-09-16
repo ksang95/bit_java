@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Insert title here</title>
+<script type="text/javascript">
+var f4 = function a1(){
+    var data=0;
+    function i1(){
+    alert('data ='+data);
+   	 return ++data;
+    }
+    return i1;
+};
+let f = function () {
+	let scope = 1;
+	
+	return function () {
+		scope++;
+		console.log('${scope}');
+	}
+};
+
+var f6 = function a1(){
+    var data=0;
+    function i1(){
+     alert('data ='+data);
+   	 return ++data;
+    }
+    return i1;
+}();
+</script>
+</head>
+<body>
+<h3> fn.js 파일 테스트중입니다.</h3>
+<button onclick="f4();">f4()</button>
+
+<button onclick="f6();">f6()</button>
+</body>
+</html>
+
+
+[] 대괄호 박스블라켓 => 후보군지정
+	 () 소괄호  => 서브패턴 
+	 . 문자
+      
+	  .{5} => .어떠한문자든 5번
+	  [^ ]{5}  => 공백제외문자  5번       	  [^\d].{5}  , [\d].{5},[\d]{2}.{5}
+      
+      /[\d]{2}.{5}/.test('aa44sdfddss')
+      /^[\d]{2}.{5}$/.test('44sdfdd')
+
+	 -A*-  => -- , -A-  *앞에 A는 있어도 되고 없어도 되고 /-A*-/.test('-A-aa') ,/-A*-/.test('--')
+ /-A*-/.test('-Ad-aa'),/-A*-/.test('-A-')
+
+
+     [-@]*
+	 -@*-  => 앞과 끝에 -가있어야 하고 중간에 @는 0 1 이상
+	 [^ ]* => 공백이 아닌것이 하나 이상일때 선택 
+	 -@?@?@?-  => -- 사이에 @는 최대 3개 0개도 가능  ?는온다면한번
+
+	 r.*? .이 0번으로 해석 됨
+	 r.+? .이 1번으로 해석 됨 , r뒤에 문자 하나 허용 
+
+     \b  바운더리 
+	 \b\w\b  문자가 하나인 단어
+	 
+	 \w+(?=X) =>단어를 선택하는데 X가 나올때 바로 앞까지
+	 (?=.*[a-z])
+
+
+	 	a*b  * 0이상   => aab, ab , aaab  ,b
+	    a+b  + 1이상   => aab, ab , aaab 
+	    a?b  ? 0또는1  => ab, b 
+
+        .*  모든문자의미 
+		-A*-  => --사이에 A가 있어도 없어도 됨  -A-  --
+        [-@]*  =>   [-@]이 0이상 , [-@]=> -나 @
+		[@]?  =>   [@]0또는1 
+
+        [a-z]{1}
+	
+	
+
+
+(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{5,}
