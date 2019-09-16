@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>json</title>
+<link rel="stylesheet" href="./css/table.css">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap');
+</style>
+<style type="text/css">
+#result {
+	width: 500px;
+	height: 300px;
+	border: 2px solid blue;
+}
+/*.tablea, .tablea tr, .tablea td, .tablea th{
+	border: 1px solid white;
+	background-color: gray;
+	color: white;
+	border-collapse: collapse;
+}
+.tablea td, .tablea th{
+width:100px;
+height: 30px;
+text-align: center;
+font-family: 'Nanum Pen Script',serif;
+font-size: 20pt;
+}
+.tablea th{
+color: yellow;
+background-color: black;
+}
+*/
+</style>
+<script>
+	const log = console.log;
+	
+	let data1={name:"홍길동",age:27};
+	let data2={"name":"홍길동","age":"27"}; //json 객체는 이름과 값(필요시)을 꼭 ""으로 묶는다
+	let s1=JSON.stringify(data1); //객체를 문자열로 -> 이름과 값(필요시)이 ""로 묶임
+	let s2=JSON.stringify(data2);
+	log(typeof(s1)," ",s1);
+	//s1.name  X
+	
+	let obj1=JSON.parse(s1); //문자열을 객체로
+	let obj2=JSON.parse(s2);
+	
+	let sample = '{"name":"홍길동","age":"27"}';
+	let sampleobj = JSON.parse(sample);
+	
+	let student = {
+			name : "홍길동",
+			ko : 99,
+			eng : 100,
+			flag : true,
+			u : null, //JSON은 null 인식, undefined 인식x
+			sum : function() {
+				return this.ko + this.eng;
+			},
+			avg : function() {
+				return this.sum() / 2;
+			}
+	}
+	
+	let studentStr=JSON.stringify(student); //함수는 무시
+	
+	
+	let data3 = [
+			{"name":"홍길동","age":"27"},
+			{"name":"고길동","age":"22"},
+			{"name":"박길동","age":"37"},
+			{"name":"최길동","age":"25"}
+	];
+	
+	let s3 = JSON.stringify(data3);
+	//alert(s3);
+	let obj3 = JSON.parse(s3);
+	
+	function getData() {
+	//obj3 을 table 구조로 만들어서 #result에 출력
+		let disp=document.getElementById("result");
+		let t="<table class='tablea'>";
+		t+="<tr><th>이 름</th><th>나 이</th></tr>"
+		//obj3.forEach(i=>t+="<tr><td>"+i.name+"</td><td>"+i.age+"</td></tr>");
+		for(let data of obj3){
+			t+="<tr><td>"
+			t+=data.name+"</td><td>"+data.age;
+			t+="</tr></td>"
+		}
+		t+="</table>";
+		disp.innerHTML=t;
+	}
+</script>
+
+</head>
+<body>
+	<h3>json</h3>
+	<button onclick="getData()">Data 가져오기</button>
+	<br>
+	<div id="result"></div>
+</body>
+</html>

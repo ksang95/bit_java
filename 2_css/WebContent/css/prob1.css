@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+@media screen and (max-width:1000px) {
+	body { /*데스크탑 크기용 UI작업*/
+		background-color: #e7ecdf;
+	}
+}
+
+@media screen and (max-width:600px) {
+	body { /*모바일 크기용 UI작업*/
+		background-color: #ffffcc;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Poppins', cursive; /*import된 폰트 적용, 맨앞에는 가장 선호 폰트, 맨뒤에는 일반적인 폰트*/
+}
+
+nav {
+	width: 100%; /*부모 요소 폰트 기준으로 100 퍼센트*/
+	height: 3em; /*부모 요소 폰트 크기 기준 3배*/
+	line-height: 3em;
+	background-color: black;
+}
+
+nav ul li {
+	display: inline;
+	padding: 10px;
+}
+
+nav ul {
+	list-style: none;
+	text-align: center;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover { /*대상에 커서 올려놓을때 동작*/
+	text-decoration: underline;
+}
+
+section {
+	width: 60%;
+	max-width: 500px;
+	/*background-color: yellow;*/
+	float: left;
+}
+
+#l {
+	width: 20%;
+	float: left;
+	/*background-color: gray; 높이가 다른 것이 보이므로 display:table-cell 지정필요*/
+}
+
+#r {
+	width: 20%;
+	float: right;
+}
+
+footer {
+	clear: both;
+	width: 100%;
+	height: 3em;
+	line-height: 3em; /*height와 일치해야 수직정렬됨*/
+	background-color: black;
+	color: white;
+	text-align: center; /*가운데정렬(수평)*/
+}
+
+a.btn {
+	display: block;
+	text-align: center;
+	width: 100px;
+	height: 40px;
+	border: 1px solid orange;
+	border-radius: 15px;
+	line-height: 40px;
+	text-decoration: none;
+	color: black;
+	background-color: gray;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin: 0 auto;
+}
+
+a.btn:hover {
+	color: red;
+	text-shadow: 5px 5px 5px white;
+}
+
+img {
+	width: 300px;
+	height: 300px;
+}

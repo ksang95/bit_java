@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Insert title here</title>
+<script>
+var w;
+function openWindow(){
+	w=window.open(' ',' ','width=200,height=200');
+	w.document.write("<p>오늘 다음과 같은 상품을 싸게 팝니다.</p>");
+	w.moveTo(0,0); //절대적 위치로 이동
+}
+function moveWindow(){
+	w.moveBy(10,10); //상대적 위치로 이동
+	w.focus(); //이 윈도우로 키보드 포커스 이동
+}
+
+</script>
+</head>
+<body>
+<input type="button" value="윈도우 생성" onclick="openWindow()" /><br>
+<input type="button" value="윈도우 이동" onclick="moveWindow()" />
+
+</body>
+</html>
