@@ -13,16 +13,16 @@
 </style>
 <script type="text/javascript">
 window.onload = function () {
-   document.querySelector('#btn1').onclick = function() {
+   document.querySelector('#btn1').onclick = function() { //html 내용 추가
 	   document.querySelector('#target').innerHTML += '<h3>Button 1 clicked</h3> '
    }
-   document.querySelector('#btn2').addEventListener('click',function(){
+   document.querySelector('#btn2').addEventListener('click',function(){ //html 내용 추가
 	   alert('Button 2 clicked');
 	   document.querySelector('#target').innerHTML += '<h3>Button 2 clicked</h3> '
    } );
 	
 }
-function addText(msg) {
+function addText(msg) { //html 내용 추가
 	let node = document.createTextNode(msg);
 	document.querySelector('#target').appendChild(node);
 }
