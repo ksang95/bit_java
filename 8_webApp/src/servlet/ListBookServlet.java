@@ -17,7 +17,7 @@ import service.BookService;
 import service.BookServiceImpl;
 import vo.BookVO;
 
-@WebServlet("/listBook.do")
+//@WebServlet("/listBook.do")
 public class ListBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -25,7 +25,7 @@ public class ListBookServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("utf-8");
 		System.out.println("/listBook.do 요청 처리");
-
+		
 		HttpSession session = request.getSession();
 		if (session.getAttribute("login") == null) {
 			request.setAttribute("msg", "로그인이 필요한 서비스입니다.");

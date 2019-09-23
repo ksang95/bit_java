@@ -14,25 +14,16 @@
 	<%@include file="common/header.jsp"%>
 	<div id="output">
 		<section>
-			<h3>menu 클릭하세요</h3>
-			<div>
-				<c:if test="${empty login}">
-					<h3>
-						<a href="./login.jsp">LOGIN</a>
-					</h3>
-				</c:if>
-				<c:if test="${!empty login}">
-					<h3>
-						<a href="./logout.do">LOGOUT</a>
-					</h3>
-					<h3>
-						<a href="./bookform.jsp">도서등록 폼</a>
-					</h3>
-					<h3>
-						<a href="./listBook.do">도서목록</a>
-					</h3>
-				</c:if>
-			</div>
+		
+		<h3>book 등록 폼</h3>
+		<form action="insertBook.do" method="post" enctype="multipart/form-data">
+			제목: <input type="text" id="bookname" name="bookname"><br><br>
+			출판사: <input type="text" id="publisher" name="publisher"><br><br>
+			가격: <input type="number" id="price" name="price"><br><br>
+			img: <input type="file" name="img" multiple="multiple"><br><br>
+			<input type="submit" value="등록">
+			<input type="reset" value="초기화">
+		</form>
 		</section>
 	</div>
 

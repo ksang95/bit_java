@@ -1,12 +1,15 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import dao.BookDAO;
 import dao.BookDAO_Oracle;
@@ -14,7 +17,8 @@ import service.BookService;
 import service.BookServiceImpl;
 import vo.BookVO;
 
-@WebServlet("/insertBook.do")
+//@WebServlet("/insertBook.do")
+@MultipartConfig(maxFileSize = 1024*1024*5)
 public class InsertBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,12 +35,27 @@ public class InsertBookServlet extends HttpServlet {
 		vo.setPrice(Integer.parseInt(request.getParameter("price")));
 		vo.setBookname(request.getParameter("bookname"));
 		vo.setPublisher(request.getParameter("publisher"));
+		
+		String path=request.getRealPath("/upload/");
+		Collection<Part> parts=request.getParts();
+		for(Part p:parts) {
+			if(p.getContentType()!=null) {
+				String fileName=p.getSubmittedFileName();
+				if(fileName!=null&&fileName.length()!=0) {
+					p.write(path+fileName);
+					vo.setImg("./upload/"+fileName);
+					System.out.println(vo);
+				}
+			}
+		}
+		
+		
 		try {
 			service.addBook(vo);
-			response.sendRedirect("listBook.do"); // 기존의 request,response객체 파괴되고 이동, url변화
+			response.sendRedirect("listBook.do");
 		} catch (Exception e) {
 			request.setAttribute("exception", new Exception("등록 데이터 확인후 다시 등록하세요"));
-			getServletContext().getRequestDispatcher("/error.jsp").forward(request, response); //예외 발생시 에러 전용 페이지로 이동
+			getServletContext().getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 		
 

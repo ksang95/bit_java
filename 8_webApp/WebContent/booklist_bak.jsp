@@ -14,25 +14,18 @@
 	<%@include file="common/header.jsp"%>
 	<div id="output">
 		<section>
-			<h3>menu 클릭하세요</h3>
-			<div>
-				<c:if test="${empty login}">
-					<h3>
-						<a href="./login.jsp">LOGIN</a>
-					</h3>
-				</c:if>
-				<c:if test="${!empty login}">
-					<h3>
-						<a href="./logout.do">LOGOUT</a>
-					</h3>
-					<h3>
-						<a href="./bookform.jsp">도서등록 폼</a>
-					</h3>
-					<h3>
-						<a href="./listBook.do">도서목록</a>
-					</h3>
-				</c:if>
-			</div>
+		<h3>book list</h3>
+	<table class="tablea">
+	<tr><th>bookid</th><th>bookname</th><th>publisher</th><th>price</th></tr>
+	<c:forEach var="data" items="${booklist}">
+		<tr>
+		<td>${data.bookid}</td>
+		<td><a href="viewBook.do?bookid=${data.bookid}">${data.bookname}</a></td>
+		<td><a href="viewpublisher.do?publisher=${data.publisher}">${data.publisher}</a></td>
+		<td>${data.price}</td>
+		</tr>
+	</c:forEach>
+	</table>
 		</section>
 	</div>
 
